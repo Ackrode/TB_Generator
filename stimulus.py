@@ -11,7 +11,7 @@ def stimulus(inputs, numero):
                     strings[i]+=' '+name
                 else:
                     strings[i]+=name+','   
-            strings[i]=strings[i]+'}='+str(numero)+"b'"+str(format(i,'0'+str(numero)+'b')+'; #1')
+            strings[i]=strings[i]+'}='+str(numero)+"'b"+str(format(i,'0'+str(numero)+'b')+'; #1')
             strings.append(strings[i])
         return strings  
     #with open('stimulus.txt', 'w') as filehandle:

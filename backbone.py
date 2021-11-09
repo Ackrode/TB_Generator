@@ -48,7 +48,6 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
             for name in inputs.get('name'):
                 # If the inputs.get('name') size is 1, then the input is a single bit
                 if len(inputs.get('size')[j])==2:
-                    print(len(inputs.get('size')[j]))
                     if len(inputs.get('name'))==1:
                         testbench.append('reg'+' ['+inputs.get('size')[0]+':' +inputs.get('size')[1]+'] '  + name +';')
                     else:
@@ -95,7 +94,10 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
         intputL=convert(inputs.get('name'))
         outputL=convert(outputs.get('name'))
         inoutL=convert(inouts.get('name'))
-        testbench.append(module +' DUT('+intputL+','+outputL+','+inoutL+');')
+        if inouts:
+            testbench.append('module '+module+'_TB('+intputL+', '+outputL+', '+inoutL+');')
+        else:
+            testbench.append('module '+module+'_TB('+intputL+', '+outputL+');')
         testbench.append('initial begin')
         testbench.append('$dumpfile("'+module+'.vcd");')
         testbench.append('$dumpvars(0,'+module+'_TB);')
