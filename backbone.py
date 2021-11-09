@@ -85,7 +85,7 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
         intputL=convert(inputs.get('name'))
         outputL=convert(outputs.get('name'))
         inoutL=convert(inouts.get('name'))
-        if inouts:
+        if inoutL:
             testbench.append(module+' DUT('+intputL+', '+outputL+', '+inoutL+');')
         else:
             testbench.append(module+' DUT('+intputL+', '+outputL+');')
