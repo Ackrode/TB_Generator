@@ -6,7 +6,7 @@ def stimulus(inputs, numero):
         for i in range(0,2**numero):
             for name in inputs.get('name'):
                 if name==inputs.get('name')[0]:
-                    strings[i]='{'+name+','
+                    strings[i]='{'+name
                 elif name==inputs.get('name')[-1]:
                     strings[i]+=' '+name
                 else:
