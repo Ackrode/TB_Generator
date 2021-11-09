@@ -7,12 +7,13 @@ def stimulus(inputs, numero):
             for name in inputs.get('name'):
                 if len(inputs.get('name'))==1:
                     strings[i]='{'+name
-                if name==inputs.get('name')[0]:
-                    strings[i]='{'+name+','
-                elif name==inputs.get('name')[-1]:
-                    strings[i]+=' '+name
                 else:
-                    strings[i]+=name+','   
+                    if name==inputs.get('name')[0]:
+                        strings[i]='{'+name+','
+                    elif name==inputs.get('name')[-1]:
+                        strings[i]+=' '+name
+                    else:
+                        strings[i]+=name+','   
             strings[i]=strings[i]+'}='+str(numero)+"'b"+str(format(i,'0'+str(numero)+'b')+'; #1')
             strings.append(strings[i])
         return strings  
