@@ -1,4 +1,7 @@
 import re
+
+# Get the design module python code
+
 def GetModule(SVFilePath):
     f = open(SVFilePath, 'r')
     Pattern1 = re.compile(r'^\s*module\s+(\w+).*')
