@@ -48,10 +48,7 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
             for name in inputs.get('name'):
                 # If the inputs.get('name') size is 1, then the input is a single bit
                 if len(inputs.get('size')[j])==2:
-                    if len(inputs.get('name'))==1:
-                        testbench.append('reg'+' ['+inputs.get('size')[0]+':' +inputs.get('size')[1]+'] '  + name +';')
-                    else:
-                        testbench.append('reg'+' ['+inputs.get('size')[j][0]+':' +inputs.get('size')[j][1]+'] '  + name +';')
+                    testbench.append('reg'+' ['+inputs.get('size')[j][0]+':' +inputs.get('size')[j][1]+'] '  + name +';')
             
                 else:
                     testbench.append('reg '+ name +';')
@@ -60,10 +57,7 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
         if outputs:
             for name in outputs.get('name'):
                 if len(outputs.get('size')[j])==2:
-                    if len(outputs.get('name'))==1:
-                        testbench.append('wire'+' ['+outputs.get('size')[0]+':' +outputs.get('size')[1]+'] '  + name +';')
-                    else:
-                        testbench.append('wire'+' ['+outputs.get('size')[j][0]+':' +outputs.get('size')[j][1]+'] '  + name +';')
+                    testbench.append('wire'+' ['+outputs.get('size')[j][0]+':' +outputs.get('size')[j][1]+'] '  + name +';')
                         
                 else:
                     testbench.append('wire '+ name +';')
@@ -72,10 +66,7 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
         if inouts:
             for name in inouts.get('name'):
                 if len(inouts.get('size')[j])==2:
-                    if len(inouts.get('name'))==1:
-                        testbench.append('wire'+' ['+inouts.get('size')[0]+':' +inouts.get('size')[1]+'] '  + name +';')
-                    else:
-                        testbench.append('wire'+' ['+inouts.get('size')[j][0]+':' +inouts.get('size')[j][1]+'] '  + name +';')
+                    testbench.append('wire'+' ['+inouts.get('size')[j][0]+':' +inouts.get('size')[j][1]+'] '  + name +';')
                 else:
                     testbench.append('wire '+ name +';')
                 j=j+1
@@ -103,7 +94,7 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
         testbench.append('$dumpvars(0,'+module+'_TB);')
         numeros=get_n(inputs)
         stimulus_list=stimulus(inputs,numeros)
-        for i in stimulus_list:
+        for i in stimulus_list[0:-1]:
             testbench.append(i)
         testbench.append('$finish;')
         testbench.append('end')
