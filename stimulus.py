@@ -1,4 +1,7 @@
 def stimulus(inputs, numero):
+    if numero <8:  
+        return ValueError("Number of inputs needs to be less than 8")
+        
     strings=['']
     for i in range(0,2**numero):
         for name in inputs.get('name'):
