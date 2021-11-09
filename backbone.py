@@ -86,9 +86,9 @@ def backbone(inputs=[], outputs=[],inouts=[], module=''):
         outputL=convert(outputs.get('name'))
         inoutL=convert(inouts.get('name'))
         if inouts:
-            testbench.append('module '+module+'_TB('+intputL+', '+outputL+', '+inoutL+');')
+            testbench.append(module+' DUT('+intputL+', '+outputL+', '+inoutL+');')
         else:
-            testbench.append('module '+module+'_TB('+intputL+', '+outputL+');')
+            testbench.append(module+' DUT('+intputL+', '+outputL+');')
         testbench.append('initial begin')
         testbench.append('$dumpfile("'+module+'.vcd");')
         testbench.append('$dumpvars(0,'+module+'_TB);')
