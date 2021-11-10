@@ -1,6 +1,6 @@
 
 module  sevensegment_CC(data, data_segment);
-  input wire [3:0] data,data1;
+  input [3:0] data;
   output reg [6:0] data_segment;
   
    always @*
