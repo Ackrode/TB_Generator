@@ -1,0 +1,4 @@
+run with the main code, make sure to have a "design.sv" file 
+if your file has a different name, modify the 
+design= "your file name goes here"
+make sure that all the files are in the same folder
